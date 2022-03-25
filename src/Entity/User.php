@@ -45,7 +45,7 @@ private $email;
 private $plainPassword;
 
 /**
- * @ORM\Column(type="json_array")
+ * @ORM\Column(type="json")
  */
 private $roles = array();
 
