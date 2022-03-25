@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4925ba3f-4778-4576-9410-6a8c4ecc0e0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kartingV4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kartingV4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="4925ba3f-4778-4576-9410-6a8c4ecc0e0d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +161,7 @@
       <updated>1615884971491</updated>
       <workItem from="1615884972633" duration="6265000" />
       <workItem from="1648196266585" duration="2302000" />
-      <workItem from="1648199406354" duration="461000" />
+      <workItem from="1648199406354" duration="1049000" />
     </task>
     <servers />
   </component>
