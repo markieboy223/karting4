@@ -93,6 +93,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if($this->authorizationChecker->isGranted('ROLE_ADMIN'))
         {
             return new RedirectResponse($this->urlGenerator->generate('activiteitenoverzicht'));
+            return new RedirectResponse($this->urlGenerator->generate('app_soortactiviteit_index'));
         }
 
         if($this->authorizationChecker->isGranted('ROLE_USER'))

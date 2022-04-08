@@ -3,6 +3,7 @@
 {% block menu %}
     <li class="active"><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
     <li><a href="{{ path('beheer') }}"><span class="badge">{{ activiteiten|length }}</span>beheer</a></li>
+    <li><a href="{{ path('app_soortactiviteit_index') }}"><span class="badge">{{ activiteiten|length }}</span>soortactiviteiten</a></li>
 {% endblock %}
 {% block content %}
     <section >

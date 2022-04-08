@@ -1,0 +1,64 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
+    <li><a href="{{ path('beheer') }}">beheer</a></li>
+    <li class="active"><a href="{{ path('app_soortactiviteit_index') }}">soortactiviteiten</a></li>
+{% endblock %}
+
+{% block content %}
+<section >
+    <table class="table" style="table-layout: fixed">
+        <caption>Dit zijn alle soortactiviteiten van het kartcentrum</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>MinLeeftijd</th>
+                <th>Tijdsduur</th>
+                <th>Prijs</th>
+                <th>Beschrijving</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soortactiviteit in soortactiviteits %}
+            <tr>
+                <td>{{ soortactiviteit.id }}</td>
+                <td>{{ soortactiviteit.naam }}</td>
+                <td>{{ soortactiviteit.minLeeftijd }}</td>
+                <td>{{ soortactiviteit.tijdsduur }}</td>
+                <td>{{ soortactiviteit.prijs }}</td>
+                <td>{{ soortactiviteit.beschrijving }}</td>
+
+                    <td title="bewerk de gegevens van deze activiteit">
+
+
+                        <a href="{{ path('app_soortactiviteit_edit', {'id':soortactiviteit.id}) }}" >
+                            <span class="glyphicon glyphicon-pencil" style="color:red"></span>
+                        </a>
+                    </td>
+                    <td title="verwijder deze activiteit is definitief">
+                        <a href="{{ path('app_soortactiviteit_delete', {'id':soortactiviteit.id}) }}" >
+                            <span class="glyphicon glyphicon-minus" style="color:red"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="6">
+                    <a href="{{ path('app_soortactiviteit_new') }}">
+                        <span class="glyphicon glyphicon-plus" style="color:red"></span>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+
+    </section>
+
+{% endblock %}

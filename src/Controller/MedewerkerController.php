@@ -4,8 +4,12 @@ namespace App\Controller;
 
 
 use App\Entity\Activiteit;
+use App\Entity\Soortactiviteit;
 use App\Form\ActiviteitType;
+use App\Form\SoortactiviteitType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -153,5 +157,81 @@ class MedewerkerController extends AbstractController
         );
         return $this->redirectToRoute('beheer');
 
+    }
+
+    /**
+     * @Route("/admin/soortactiviteit", name="app_soortactiviteit_index")
+     */
+    public function index(EntityManagerInterface $em)
+    {
+        $soort = $em->getRepository(Soortactiviteit::class)->findAll();
+        return $this->render('soortactiviteit/index.html.twig', [
+            'soortactiviteits' => $soort,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/soortactiviteit/new", name="app_soortactiviteit_new", methods={"GET", "POST"})
+     */
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $soortactiviteit = new Soortactiviteit();
+        $form = $this->createForm(SoortactiviteitType::class, $soortactiviteit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($soortactiviteit);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_soortactiviteit_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('soortactiviteit/new.html.twig', [
+            'soortactiviteit' => $soortactiviteit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/soortactiviteit/{id}", name="app_soortactiviteit_show", methods={"GET"})
+     */
+    public function show(Soortactiviteit $soortactiviteit): Response
+    {
+        return $this->render('soortactiviteit/show.html.twig', [
+            'soortactiviteit' => $soortactiviteit,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/soortactiviteit/{id}/edit", name="app_soortactiviteit_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Soortactiviteit $soortactiviteit, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(SoortactiviteitType::class, $soortactiviteit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_soortactiviteit_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('soortactiviteit/edit.html.twig', [
+            'soortactiviteit' => $soortactiviteit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/soortactiviteit/{id}", name="app_soortactiviteit_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Soortactiviteit $soortactiviteit, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$soortactiviteit->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($soortactiviteit);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_soortactiviteit_index', [], Response::HTTP_SEE_OTHER);
     }
 }
