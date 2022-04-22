@@ -3,7 +3,7 @@
 {% block menu %}
     <li class="active"><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
     <li><a href="{{ path('beheer') }}"><span class="badge">{{ activiteiten|length }}</span>beheer</a></li>
-    <li><a href="{{ path('app_soortactiviteit_index') }}"><span class="badge">{{ activiteiten|length }}</span>soortactiviteiten</a></li>
+    <li><a href="{{ path('app_soortactiviteit_index') }}">soortactiviteiten</a></li>
 {% endblock %}
 {% block content %}
     <section >
@@ -15,11 +15,39 @@
                 <td>tijd</td>
                 <td>soort activiteit</td>
                 <td>deelnemers</td>
+                <td>maxdeelnemers</td>
                 <td>actie</td>
             </tr>
             </thead>
             <tbody>
             {% for activiteit in activiteiten %}
+             {% if activiteit.users|length ==  activiteit.maxdeelnemers %}
+                 <tr class="bg-danger">
+                     <td>
+                         {{ activiteit.datum|date("d-m-Y")}}
+                     </td>
+                     <td>
+                         {{ activiteit.tijd|date("H:i")}}
+                     </td>
+
+                     <td>
+                         {{ activiteit.soort.naam}}
+                     </td>
+                     <td>
+                         {{ activiteit.users|length}}
+                     </td>
+
+                     <td>
+                         {{ activiteit.maxdeelnemers}}
+                     </td>
+                     <td title="deelnemers aan deze activiteit">
+
+                         <a href="{{ path('details', {'id':activiteit.id}) }}" >
+                             <span class="glyphicon glyphicon-search" style="color:red"></span>
+                         </a>
+                     </td>
+                 </tr>
+             {%  endif %}
                 <tr>
                     <td>
                         {{ activiteit.datum|date("d-m-Y")}}
@@ -33,6 +61,10 @@
                     </td>
                     <td>
                         {{ activiteit.users|length}}
+                    </td>
+
+                    <td>
+                        {{ activiteit.maxdeelnemers}}
                     </td>
                     <td title="deelnemers aan deze activiteit">
 
